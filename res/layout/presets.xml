@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		Kitchen Timer Copyright (C) 2010 Roberto Leinardi This program is free
+		software: you can redistribute it and/or modify it under the terms of
+		the GNU General Public License as published by the Free Software
+		Foundation, either version 3 of the License, or (at your option) any
+		later version. This program is distributed in the hope that it will be
+		useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+		General Public License for more details. You should have received a
+		copy of the GNU General Public License along with this program. If
+		not, see <http://www.gnu.org/licenses/>.
+	-->
+
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:paddingLeft="2dp"
+	android:paddingRight="2dp">
+	<ListView
+		android:id="@id/android:list"
+		android:layout_width="fill_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1">
+	</ListView>
+	<View
+		android:layout_height="2dp"
+		android:layout_width="fill_parent"
+		android:background="@drawable/gradient_bwb_vertical" />
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:layout_marginBottom="4dp">
+		<com.leinardi.kitchentimer.customviews.NumberPicker
+			android:id="@+id/npHours"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_weight="1" />
+		<com.leinardi.kitchentimer.customviews.NumberPicker
+			android:id="@+id/npMinutes"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_weight="1" />
+		<com.leinardi.kitchentimer.customviews.NumberPicker
+			android:id="@+id/npSeconds"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_weight="1" />
+	</LinearLayout>
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:gravity="center">
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_width="0dp"
+			android:inputType="textCapSentences"
+			android:maxLines="2"
+			android:hint="@string/name"
+			android:id="@+id/etPresetName"
+			android:maxLength="50" />
+		<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/save"
+			android:minWidth="80dp"
+			android:id="@+id/btnSave">
+			<requestFocus />
+		</Button>
+	</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string
+		name="donate_message">Kitchen Timer è gratuita, open source e priva di pubblicità.
+		Supportala facendo una piccola donazione.\n\nGrazie al tuo aiuto sarà
+		possibile testare l\'applicazione su un numero maggiore di terminali e
+		consentirà allo sviluppatore di continuare il suo lavoro.\n\nDonare è
+		semplice: premendo il pulsante \"Sì\" verrai reindirizzato sul Market dove
+		potrai acquistare una delle applicazioni Donate.</string>
+</resources>

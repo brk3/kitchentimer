@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		Kitchen Timer Copyright (C) 2010 Roberto Leinardi This program is free
+		software: you can redistribute it and/or modify it under the terms of
+		the GNU General Public License as published by the Free Software
+		Foundation, either version 3 of the License, or (at your option) any
+		later version. This program is distributed in the hope that it will be
+		useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+		General Public License for more details. You should have received a
+		copy of the GNU General Public License along with this program. If
+		not, see <http://www.gnu.org/licenses/>.
+	-->
+
+<resources>
+	<string
+		name="pref_info_version_key">pref_info_version</string>
+	<string
+		name="pref_donate_key">pref_donate</string>
+	<string
+		name="pref_report_a_bug_key">pref_report_a_bug</string>
+	<string
+		name="pref_changelog_key">pref_changelog</string>
+	<string
+		name="pref_eula_key">pref_eula</string>
+	<string
+		name="pref_show_tips_key">pref_show_tips</string>
+	<string
+		name="pref_keep_screen_on_key">pref_keep_screen_on</string>
+	<string
+		name="pref_clear_timer_label_key">pref_clear_timer_label_key</string>
+	<string
+		name="pref_timer_name_0_key">pref_timer_name_0</string>
+	<string
+		name="pref_timer_name_1_key">pref_timer_name_1</string>
+	<string
+		name="pref_timer_name_2_key">pref_timer_name_2</string>
+	<string
+		name="pref_notification_sound_key">pref_notification_sound</string>
+	<string
+		name="pref_notification_insistent_key">pref_notification_insistent</string>
+	<string
+		name="pref_notification_custom_sound_key">pref_notification_custom_sound</string>
+	<string
+		name="pref_notification_ringtone_key">pref_notification_ringtone</string>
+	<string
+		name="pref_notification_led_key">pref_notification_led</string>
+	<string
+		name="pref_notification_led_color_key">pref_notification_led_color</string>
+	<string
+		name="pref_notification_led_blink_rate_key">pref_notification_led_blink_rate</string>
+	<string
+		name="pref_notification_vibrate_key">pref_notification_vibrate</string>
+	<string
+		name="pref_notification_vibrate_pattern_key">pref_notification_vibrate_pattern</string>
+</resources>

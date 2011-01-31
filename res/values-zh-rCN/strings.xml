@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+		Kitchen Timer Copyright (C) 2010 Roberto Leinardi This program is free
+		software: you can redistribute it and/or modify it under the terms of
+		the GNU General Public License as published by the Free Software
+		Foundation, either version 3 of the License, or (at your option) any
+		later version. This program is distributed in the hope that it will be
+		useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+		General Public License for more details. You should have received a
+		copy of the GNU General Public License along with this program. If
+		not, see <http://www.gnu.org/licenses/>.
+	-->
+<resources>
+	<string name="fourzeros">00:00</string>
+	<string name="sixzeros">00:00:00</string>
+	<string name="hhmmss">hh:mm:ss</string>
+	<string name="mmss">mm:ss</string>
+	<string name="timer">计时器</string>
+	<string name="timer1">计时器 1</string>
+	<string name="timer2">计时器 2</string>
+	<string name="timer3">计时器 3</string>
+	<string name="start">开始</string>
+	<string name="stop">停止</string>
+	<string name="changelog_title">更新日志</string>
+	<string name="tip1">点击计时器或者使用通知栏来停止警报声音。</string>
+
+	<!-- Presets -->
+	<string name="name">名字</string>
+	<string name="save">保存</string>
+	<string name="edit">编辑</string>
+	<string name="delete">删除</string>
+	<string name="ok">确定</string>
+	<string name="cancel">取消</string>
+	<string name="default_text">默认</string>
+	<string name="timer_name">计时器名字</string>
+	<string name="edit_timer_name">编辑计时器名字</string>
+	<string name="error_time">你必须选择一个时间</string>
+	<string name="error_name">你必须选择一个名字</string>
+	<string name="delete_preset_title">删除所有预设？</string>
+	<string name="delete_preset_message">你确定要删除所有预设？</string>
+	<string name="sd_not_mounted">SD卡未挂载</string>
+	<string name="preset_list_empty">预设列表为空</string>
+	<string name="presets_saved">预设已保存在</string>
+	<string name="presets_export_error">保持预设时出现了一个错误，检查logcat查看详情。
+	</string>
+	<string name="unable_to_read_file">无法读取文件</string>
+
+
+	<!-- Menu -->
+	<string name="info">信息</string>
+	<string name="presets">预设</string>
+	<string name="preferences">首选项</string>
+	<string name="exit">退出</string>
+	<string name="import_from_sd">从SD导入</string>
+	<string name="export_to_sd">导出到SD卡</string>
+	<string name="truncate">删除所有</string>
+
+	<!-- Preferences -->
+	<string name="pref_show_tips">开启时显示贴士</string>
+	<string name="pref_display_settings">显示设置</string>
+	<string name="pref_keep_screen_on">保持屏幕开启</string>
+	<string name="pref_keep_screen_on_summary_on">当程序运行时屏幕将保持开启</string>
+	<string name="pref_keep_screen_on_summary_off">屏幕可根据系统设置进入待机模式
+	</string>
+	<string name="pref_set_timers_names">设置计时器名字</string>
+	<string name="pref_notification_settings">通知设置</string>
+	<string name="pref_notification_sound">声音</string>
+	<string name="pref_notification_sound_summary_on">开启声音通知</string>
+	<string name="pref_notification_sound_summary_off">禁用声音提示</string>
+	<string name="pref_notification_insistent">持续的</string>
+	<string name="pref_notification_insistent_summary_on">打开持续模式</string>
+	<string name="pref_notification_insistent_summary_off">关闭持续模式</string>
+	<string name="pref_notification_custom_sound">自定义声音</string>
+	<string name="pref_notification_custom_sound_summary_on">使用自定义事时间</string>
+	<string name="pref_notification_custom_sound_summary_off">使用默认声音</string>
+	<string name="pref_notification_ringtone">选择警报声音</string>
+	<string name="pref_notification_ringtone_summary">从系统可用的警报声音中选择你自定义的声音
+	</string>
+	<string name="pref_notification_led">LED</string>
+	<string name="pref_notification_led_summary_on">LED 通知已开启</string>
+	<string name="pref_notification_led_summary_off">LED 通知已禁用</string>
+
+	<string name="pref_notification_led_color">LED 颜色</string>
+	<string name="pref_notification_led_color_summary">更改 LED 颜色</string>
+	<string name="pref_notification_led_color_dialogtitle">选择你的 LED 颜色</string>
+
+	<string name="pref_notification_led_color_green">绿色</string>
+	<string name="pref_notification_led_color_white">白色</string>
+	<string name="pref_notification_led_color_red">红色/默认</string>
+	<string name="pref_notification_led_color_blue">蓝色</string>
+	<string name="pref_notification_led_color_yellow">黄色</string>
+	<string name="pref_notification_led_color_cyan">青色</string>
+	<string name="pref_notification_led_color_magenta">品红</string>
+	<string name="pref_notification_led_color_pink">粉红</string>
+	<string name="pref_notification_led_color_orange">橘黄色</string>
+	<string name="pref_notification_led_color_light_blue">淡蓝色</string>
+
+	<string name="pref_notification_led_blink_rate">LED 闪烁频率</string>
+	<string name="pref_notification_led_blink_rate_summary">更改 LED 闪烁频率</string>
+	<string name="pref_notification_led_blink_rate_dialogtitle">选择你的 LED 闪烁频率</string>
+	<string name="pref_notification_led_blink_rate_two">2 (快)</string>
+	<string name="pref_notification_led_blink_rate_three">3</string>
+	<string name="pref_notification_led_blink_rate_four">4 (中)</string>
+	<string name="pref_notification_led_blink_rate_five">5</string>
+	<string name="pref_notification_led_blink_rate_six">6 (慢)</string>
+
+	<string name="pref_notification_vibrate">震动</string>
+	<string name="pref_notification_vibrate_summary_on">开启震动通知</string>
+	<string name="pref_notification_vibrate_summary_off">禁用自动通知</string>
+
+	<string name="pref_notification_vibrate_pattern">震动模式</string>
+	<string name="pref_notification_vibrate_pattern_summary">更改震动模式</string>
+	<string name="pref_notification_vibrate_pattern_dialogtitle">选择你的震动模式</string>
+	<string name="pref_notification_vibrate_pattern_normal">标准</string>
+	<string name="pref_notification_vibrate_pattern_medium">中等震动</string>
+	<string name="pref_notification_vibrate_pattern_long">长震动</string>
+	<string name="pref_notification_vibrate_pattern_multiple_short">多次短震动</string>
+	<string name="pref_notification_vibrate_pattern_multiple_long">多次长震动</string>
+	<string name="pref_info_version">版本</string>
+	<string name="pref_info_version_error">无法确定版本</string>
+	<string name="pref_report_a_bug">报告错误</string>
+	<string name="pref_report_a_bug_summary">提交一个新的问题给问题追踪器</string>
+	<string name="pref_display_changelog_summary">显示程序更新日志</string>
+	<string name="pref_display_eula_summary">显示程序许可协议</string>
+
+	<!-- Notifications -->
+	<string name="timer_started">计时器已开始</string>
+	<string name="click_to_open">点击这儿打开程序</string>
+	<string name="countdown_ended">倒计时结束</string>
+
+
+	<!-- Eula -->
+	<string name="eula_title">许可协议</string>
+	<string name="eula_accept">接受</string>
+	<string name="eula_refuse">拒绝</string>
+
+</resources>

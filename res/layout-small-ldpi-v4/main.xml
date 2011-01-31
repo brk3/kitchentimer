@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		Kitchen Timer Copyright (C) 2010 Roberto Leinardi This program is free
+		software: you can redistribute it and/or modify it under the terms of
+		the GNU General Public License as published by the Free Software
+		Foundation, either version 3 of the License, or (at your option) any
+		later version. This program is distributed in the hope that it will be
+		useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+		General Public License for more details. You should have received a
+		copy of the GNU General Public License along with this program. If
+		not, see <http://www.gnu.org/licenses/>.
+	-->
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_height="fill_parent"
+	android:gravity="center"
+	android:layout_width="wrap_content"
+	android:layout_gravity="center">
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:gravity="center"
+			android:id="@+id/llTimer0">
+			<TextView
+				android:id="@+id/tvTimer0_label"
+				android:layout_height="wrap_content"
+				android:textStyle="bold"
+				android:textColor="@color/white"
+				android:shadowColor="@color/white"
+				android:shadowRadius="3"
+				android:ellipsize="marquee"
+				android:maxLines="1"
+				android:paddingLeft="6dp"
+				android:paddingRight="6dp"
+				android:layout_width="fill_parent"
+				android:gravity="center" />
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:typeface="sans"
+				android:textStyle="bold"
+				android:layout_gravity="center"
+				android:id="@+id/tvTimer0"
+				android:text="@string/sixzeros"
+				android:background="@drawable/background_shape"
+				android:paddingLeft="7dp"
+				android:paddingRight="7dp"
+				android:textSize="70dp">
+			</TextView>
+		</LinearLayout>
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="2dp">
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_weight="1"
+				android:gravity="left"
+				android:id="@+id/llTimer1"
+				android:layout_width="0dp">
+				<TextView
+					android:id="@+id/tvTimer1_label"
+					android:layout_height="wrap_content"
+					android:textStyle="bold"
+					android:textColor="@color/white"
+					android:shadowColor="@color/white"
+					android:shadowRadius="3"
+					android:ellipsize="marquee"
+					android:maxLines="1"
+					android:paddingRight="10dp"
+					android:layout_width="fill_parent"
+					android:gravity="left" />
+				<TextView
+					android:layout_height="wrap_content"
+					android:typeface="sans"
+					android:textStyle="bold"
+					android:id="@+id/tvTimer1"
+					android:text="@string/fourzeros"
+					android:background="@drawable/background_shape"
+					android:ellipsize="marquee"
+					android:gravity="center"
+					android:layout_marginRight="4dp"
+					android:layout_width="wrap_content"
+					android:textSize="50dp">
+				</TextView>
+			</LinearLayout>
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_weight="1"
+				android:gravity="right"
+				android:id="@+id/llTimer2"
+				android:layout_width="0dp">
+				<TextView
+					android:id="@+id/tvTimer2_label"
+					android:layout_height="wrap_content"
+					android:textStyle="bold"
+					android:textColor="@color/white"
+					android:shadowColor="@color/white"
+					android:shadowRadius="3"
+					android:ellipsize="marquee"
+					android:maxLines="1"
+					android:paddingLeft="10dp"
+					android:layout_width="fill_parent"
+					android:gravity="right" />
+				<TextView
+					android:layout_height="wrap_content"
+					android:typeface="sans"
+					android:textStyle="bold"
+					android:id="@+id/tvTimer2"
+					android:text="@string/fourzeros"
+					android:background="@drawable/background_shape"
+					android:ellipsize="marquee"
+					android:gravity="center"
+					android:layout_marginLeft="4dp"
+					android:layout_width="wrap_content"
+					android:textSize="50dp">
+				</TextView>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_width="fill_parent">
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_marginTop="6dp">
+
+			<com.leinardi.kitchentimer.customviews.NumberPicker
+				android:id="@+id/npHours"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:layout_weight="1" />
+			<com.leinardi.kitchentimer.customviews.NumberPicker
+				android:id="@+id/npMinutes"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:layout_weight="1" />
+			<com.leinardi.kitchentimer.customviews.NumberPicker
+				android:id="@+id/npSeconds"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:layout_weight="1" />
+
+		</LinearLayout>
+
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent">
+			<Button
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:id="@+id/btnTimer0"
+				android:text="@string/start"
+				android:layout_weight="1"
+				android:textSize="22dp">
+			</Button>
+			<Button
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:layout_weight="1"
+				android:id="@+id/btnTimer1"
+				android:text="@string/start"
+				android:textSize="22dp"></Button>
+			<Button
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:layout_width="fill_parent"
+				android:id="@+id/btnTimer2"
+				android:text="@string/start"
+				android:textSize="22dp"></Button>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>

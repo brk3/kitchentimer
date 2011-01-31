@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		Kitchen Timer Copyright (C) 2010 Roberto Leinardi This program is free
+		software: you can redistribute it and/or modify it under the terms of
+		the GNU General Public License as published by the Free Software
+		Foundation, either version 3 of the License, or (at your option) any
+		later version. This program is distributed in the hope that it will be
+		useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+		General Public License for more details. You should have received a
+		copy of the GNU General Public License along with this program. If
+		not, see <http://www.gnu.org/licenses/>.
+	-->
+
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/com.leinardi.kitchentimer">
+	<PreferenceCategory
+		android:title="@string/info">
+		<Preference
+			android:key="@string/pref_info_version_key"
+			style="?android:preferenceInformationStyle"
+			android:title="@string/pref_info_version" />
+		<com.leinardi.kitchentimer.customviews.DonateDialogPreference
+			app:fileName="@string/changelog_filename"
+			android:key="@string/pref_donate_key"
+			android:title="@string/pref_donate"
+			android:summary="@string/pref_donate_summary"
+			android:dialogTitle="@string/pref_donate"
+			android:dialogMessage="@string/donate_message"
+			android:positiveButtonText="@string/yes" 
+			android:negativeButtonText="@string/no"/>
+		<Preference
+			android:key="@string/pref_report_a_bug_key"
+			android:title="@string/pref_report_a_bug"
+			android:summary="@string/pref_report_a_bug_summary" />
+		<com.leinardi.kitchentimer.customviews.MyDialogPreference
+			app:fileName="@string/changelog_filename"
+			android:key="@string/pref_changelog_key"
+			android:title="@string/changelog_title"
+			android:summary="@string/pref_display_changelog_summary"
+			android:dialogIcon="@drawable/ic_dialog_info"
+			android:dialogTitle="@string/changelog_title"
+			android:negativeButtonText="@null" />
+		<com.leinardi.kitchentimer.customviews.MyDialogPreference
+			app:fileName="@string/eula_filename"
+			android:key="@string/pref_eula_key"
+			android:title="@string/eula_title"
+			android:summary="@string/pref_display_eula_summary"
+			android:dialogIcon="@drawable/ic_dialog_info"
+			android:dialogTitle="@string/eula_title"
+			android:negativeButtonText="@null" />
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="@string/pref_display_settings">
+		<CheckBoxPreference
+			android:key="@string/pref_show_tips_key"
+			android:title="@string/pref_show_tips"
+			android:defaultValue="true" />
+		<CheckBoxPreference
+			android:key="@string/pref_keep_screen_on_key"
+			android:title="@string/pref_keep_screen_on"
+			android:summaryOn="@string/pref_keep_screen_on_summary_on"
+			android:summaryOff="@string/pref_keep_screen_on_summary_off"
+			android:defaultValue="false" />
+		<CheckBoxPreference
+			android:key="@string/pref_clear_timer_label_key"
+			android:title="@string/pref_clear_timer_label"
+			android:summaryOn="@string/pref_clear_timer_label_summary_on"
+			android:summaryOff="@string/pref_clear_timer_label_summary_off"
+			android:defaultValue="false" />
+		<PreferenceScreen
+			android:title="@string/pref_set_timers_names">
+			<EditTextPreference
+				android:key="pref_timer_name_0"
+				android:title="@string/timer1"
+				android:defaultValue="@string/timer1"
+				android:inputType="textCapSentences"
+				android:maxLines="1"
+				android:maxLength="50" />
+			<EditTextPreference
+				android:key="pref_timer_name_1"
+				android:title="@string/timer2"
+				android:defaultValue="@string/timer2"
+				android:inputType="textCapSentences"
+				android:maxLines="1"
+				android:maxLength="50" />
+			<EditTextPreference
+				android:key="pref_timer_name_2"
+				android:title="@string/timer3"
+				android:defaultValue="@string/timer3"
+				android:inputType="textCapSentences"
+				android:maxLines="1"
+				android:maxLength="50" />
+		</PreferenceScreen>
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="@string/pref_notification_settings">
+		<CheckBoxPreference
+			android:key="@string/pref_notification_sound_key"
+			android:title="@string/pref_notification_sound"
+			android:summaryOn="@string/pref_notification_sound_summary_on"
+			android:summaryOff="@string/pref_notification_sound_summary_off"
+			android:defaultValue="true"
+			android:disableDependentsState="false" />
+		<CheckBoxPreference
+			android:key="@string/pref_notification_insistent_key"
+			android:title="@string/pref_notification_insistent"
+			android:summaryOn="@string/pref_notification_insistent_summary_on"
+			android:summaryOff="@string/pref_notification_insistent_summary_off"
+			android:defaultValue="true"
+			android:dependency="@string/pref_notification_sound_key" />
+		<CheckBoxPreference
+			android:key="@string/pref_notification_custom_sound_key"
+			android:title="@string/pref_notification_custom_sound"
+			android:summaryOn="@string/pref_notification_custom_sound_summary_on"
+			android:summaryOff="@string/pref_notification_custom_sound_summary_off"
+			android:defaultValue="false"
+			android:dependency="@string/pref_notification_sound_key" />
+		<RingtonePreference
+			android:key="@string/pref_notification_ringtone_key"
+			android:title="@string/pref_notification_ringtone"
+			android:summary="@string/pref_notification_ringtone_summary"
+			android:ringtoneType="alarm"
+			android:showSilent="false"
+			android:dependency="@string/pref_notification_custom_sound_key" />
+		<CheckBoxPreference
+			android:key="@string/pref_notification_led_key"
+			android:title="@string/pref_notification_led"
+			android:summaryOn="@string/pref_notification_led_summary_on"
+			android:summaryOff="@string/pref_notification_led_summary_off"
+			android:defaultValue="true" />
+		<ListPreference
+			android:key="@string/pref_notification_led_color_key"
+			android:dependency="@string/pref_notification_led_key"
+			android:defaultValue="red"
+			android:title="@string/pref_notification_led_color"
+			android:summary="@string/pref_notification_led_color_summary"
+			android:entries="@array/pref_notification_led_color_entries"
+			android:entryValues="@array/pref_notification_led_color_values"
+			android:dialogTitle="@string/pref_notification_led_color_dialogtitle" />
+		<ListPreference
+			android:key="@string/pref_notification_led_blink_rate_key"
+			android:dependency="@string/pref_notification_led_key"
+			android:defaultValue="2"
+			android:title="@string/pref_notification_led_blink_rate"
+			android:summary="@string/pref_notification_led_blink_rate_summary"
+			android:entries="@array/pref_notification_led_blink_rate_entries"
+			android:entryValues="@array/pref_notification_led_blink_rate_values"
+			android:dialogTitle="@string/pref_notification_led_blink_rate_dialogtitle" />
+		<CheckBoxPreference
+			android:key="@string/pref_notification_vibrate_key"
+			android:title="@string/pref_notification_vibrate"
+			android:summaryOn="@string/pref_notification_vibrate_summary_on"
+			android:summaryOff="@string/pref_notification_vibrate_summary_off"
+			android:defaultValue="true" />
+		<ListPreference
+			android:key="@string/pref_notification_vibrate_pattern_key"
+			android:dependency="@string/pref_notification_vibrate_key"
+			android:defaultValue=""
+			android:title="@string/pref_notification_vibrate_pattern"
+			android:summary="@string/pref_notification_vibrate_pattern_summary"
+			android:entries="@array/pref_notification_vibrate_pattern_entries"
+			android:entryValues="@array/pref_notification_vibrate_pattern_values"
+			android:dialogTitle="@string/pref_notification_vibrate_pattern_dialogtitle" />
+	</PreferenceCategory>
+</PreferenceScreen>
+

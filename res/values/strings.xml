@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		Kitchen Timer Copyright (C) 2010 Roberto Leinardi This program is free
+		software: you can redistribute it and/or modify it under the terms of
+		the GNU General Public License as published by the Free Software
+		Foundation, either version 3 of the License, or (at your option) any
+		later version. This program is distributed in the hope that it will be
+		useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+		General Public License for more details. You should have received a
+		copy of the GNU General Public License along with this program. If
+		not, see <http://www.gnu.org/licenses/>.
+	-->
+
+<resources>
+	<string
+		name="fourzeros">00:00</string>
+	<string
+		name="sixzeros">00:00:00</string>
+	<string
+		name="hhmmss">hh:mm:ss</string>
+	<string
+		name="mmss">mm:ss</string>
+	<string
+		name="timer">Timer</string>
+	<string
+		name="timer1">Timer 1</string>
+	<string
+		name="timer2">Timer 2</string>
+	<string
+		name="timer3">Timer 3</string>
+	<string
+		name="start">Start</string>
+	<string
+		name="stop">Stop</string>
+	<string
+		name="changelog_title">Changelog</string>
+	<string
+		name="tip1">To TURN OFF THE ALARM press the red timer or use/open the
+		Notification
+		Bar.</string>
+
+	<!-- Presets -->
+	<string
+		name="name">Name</string>
+	<string
+		name="save">Save</string>
+	<string
+		name="edit">Edit</string>
+	<string
+		name="delete">Delete</string>
+	<string
+		name="ok">OK</string>
+	<string
+		name="cancel">Cancel</string>
+	<string
+		name="yes">Yes</string>
+	<string
+		name="no">No</string>
+	<string
+		name="back">Back</string>
+	<string
+		name="default_text">Default</string>
+	<string
+		name="timer_name">Timer name</string>
+	<string
+		name="edit_timer_name">Edit Timer name</string>
+	<string
+		name="error_time">You must select a time</string>
+	<string
+		name="error_name">You must select a name</string>
+	<string
+		name="delete_preset_title">Delete all presets?</string>
+	<string
+		name="delete_preset_message">Are you sure want to delete all presets?</string>
+	<string
+		name="sd_not_mounted">SD not mounted</string>
+	<string
+		name="preset_list_empty">Preset list empty</string>
+	<string
+		name="presets_saved">Presets saved in</string>
+	<string
+		name="presets_export_error">An error occured while saving presets, check the logcat for
+		details.
+	</string>
+	<string
+		name="unable_to_read_file">Unable to read file</string>
+
+
+	<!-- Menu -->
+	<string
+		name="info">Info</string>
+	<string
+		name="presets">Presets</string>
+	<string
+		name="preferences">Preferences</string>
+	<string
+		name="donate">Donate</string>
+	<string
+		name="exit">Exit</string>
+	<string
+		name="exit_message">You are about to exit the application, do you want to stop all
+		the timers?</string>
+	<string
+		name="exit_title">Stop all timers?</string>
+	<string
+		name="import_from_sd">Import from SD</string>
+	<string
+		name="export_to_sd">Export to SD</string>
+	<string
+		name="truncate">Delete all</string>
+
+	<!-- Preferences -->
+	<string
+		name="pref_info_version">Version</string>
+	<string
+		name="pref_info_version_error">Unable to determine version</string>
+	<string
+		name="pref_donate">Support Kitchen Timer</string>
+	<string
+		name="pref_donate_summary">Help us to keep it free and without ads</string>
+	<string
+		name="pref_report_a_bug">Report a Bug</string>
+	<string
+		name="pref_report_a_bug_summary">Submit a new issue to the issue tracker</string>
+	<string
+		name="pref_display_changelog_summary">Display application changelog</string>
+	<string
+		name="pref_display_eula_summary">Display application license</string>
+	<string
+		name="pref_show_tips">Show Tips at Startup</string>
+	<string
+		name="pref_display_settings">Display settings</string>
+	<string
+		name="pref_keep_screen_on">Keep Screen On</string>
+	<string
+		name="pref_keep_screen_on_summary_on">The screen will remain active while the program is running
+	</string>
+	<string
+		name="pref_keep_screen_on_summary_off">The screen goes into standby according to system settings
+	</string>
+	<string
+		name="pref_clear_timer_label">Clear Timer label</string>
+	<string
+		name="pref_clear_timer_label_summary_on">The Timer label returns to the default value after a preset time
+		reaches its alarm.</string>
+	<string
+		name="pref_clear_timer_label_summary_off">The Timer label keeps the name of the last used preset</string>
+	<string
+		name="pref_set_timers_names">Set Timer names</string>
+	<string
+		name="pref_notification_settings">Notification settings</string>
+	<string
+		name="pref_notification_sound">Sound</string>
+	<string
+		name="pref_notification_sound_summary_on">Sound notification enabled</string>
+	<string
+		name="pref_notification_sound_summary_off">Sound notification disabled</string>
+	<string
+		name="pref_notification_insistent">Insistent</string>
+	<string
+		name="pref_notification_insistent_summary_on">Insistent mode on</string>
+	<string
+		name="pref_notification_insistent_summary_off">Insistent mode off</string>
+	<string
+		name="pref_notification_custom_sound">Custom sound</string>
+	<string
+		name="pref_notification_custom_sound_summary_on">Use custom sound</string>
+	<string
+		name="pref_notification_custom_sound_summary_off">Use default sound</string>
+	<string
+		name="pref_notification_ringtone">Select alarm sound</string>
+	<string
+		name="pref_notification_ringtone_summary">Select a custom sound from available system alarm sounds
+	</string>
+	<string
+		name="pref_notification_led">LED</string>
+	<string
+		name="pref_notification_led_summary_on">LED notification enabled</string>
+	<string
+		name="pref_notification_led_summary_off">LED notification disabled</string>
+
+	<string
+		name="pref_notification_led_color">LED color</string>
+	<string
+		name="pref_notification_led_color_summary">Change LED color</string>
+	<string
+		name="pref_notification_led_color_dialogtitle">Select your LED color</string>
+
+	<string
+		name="pref_notification_led_color_green">Green</string>
+	<string
+		name="pref_notification_led_color_white">White</string>
+	<string
+		name="pref_notification_led_color_red">Red/Default</string>
+	<string
+		name="pref_notification_led_color_blue">Blue</string>
+	<string
+		name="pref_notification_led_color_yellow">Yellow</string>
+	<string
+		name="pref_notification_led_color_cyan">Cyan</string>
+	<string
+		name="pref_notification_led_color_magenta">Magenta</string>
+	<string
+		name="pref_notification_led_color_pink">Pink</string>
+	<string
+		name="pref_notification_led_color_orange">Orange</string>
+	<string
+		name="pref_notification_led_color_light_blue">Light Blue</string>
+
+	<string
+		name="pref_notification_led_blink_rate">LED blink rate</string>
+	<string
+		name="pref_notification_led_blink_rate_summary">Change LED blink rate</string>
+	<string
+		name="pref_notification_led_blink_rate_dialogtitle">Select your LED blink rate</string>
+	<string
+		name="pref_notification_led_blink_rate_two">2 (Fast)</string>
+	<string
+		name="pref_notification_led_blink_rate_three">3</string>
+	<string
+		name="pref_notification_led_blink_rate_four">4 (Medium)</string>
+	<string
+		name="pref_notification_led_blink_rate_five">5</string>
+	<string
+		name="pref_notification_led_blink_rate_six">6 (Slow)</string>
+
+	<string
+		name="pref_notification_vibrate">Vibrate</string>
+	<string
+		name="pref_notification_vibrate_summary_on">Vibrate notification enabled</string>
+	<string
+		name="pref_notification_vibrate_summary_off">Vibrate notification disabled</string>
+
+	<string
+		name="pref_notification_vibrate_pattern">Vibrate pattern</string>
+	<string
+		name="pref_notification_vibrate_pattern_summary">Change vibrate pattern</string>
+	<string
+		name="pref_notification_vibrate_pattern_dialogtitle">Select your vibrate pattern</string>
+	<string
+		name="pref_notification_vibrate_pattern_normal">Normal</string>
+	<string
+		name="pref_notification_vibrate_pattern_medium">Medium Vibrate</string>
+	<string
+		name="pref_notification_vibrate_pattern_long">Long Vibrate</string>
+	<string
+		name="pref_notification_vibrate_pattern_multiple_short">Multiple Short</string>
+	<string
+		name="pref_notification_vibrate_pattern_multiple_long">Multiple Long</string>
+
+	<!-- Notifications -->
+	<string
+		name="timer_started">Timer Started</string>
+	<string
+		name="click_to_open">Click here to open the application</string>
+	<string
+		name="countdown_ended">Countdown ended</string>
+
+
+	<!-- Eula -->
+	<string
+		name="eula_title">License</string>
+	<string
+		name="eula_accept">Accept</string>
+	<string
+		name="eula_refuse">Refuse</string>
+
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+		Kitchen Timer Copyright (C) 2010 Roberto Leinardi This program is free
+		software: you can redistribute it and/or modify it under the terms of
+		the GNU General Public License as published by the Free Software
+		Foundation, either version 3 of the License, or (at your option) any
+		later version. This program is distributed in the hope that it will be
+		useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+		General Public License for more details. You should have received a
+		copy of the GNU General Public License along with this program. If
+		not, see <http://www.gnu.org/licenses/>.
+	-->
+
+<resources>
+	<string-array
+		name="pref_notification_led_color_entries">
+		<item>@string/pref_notification_led_color_red</item>
+		<item>@string/pref_notification_led_color_green</item>
+		<item>@string/pref_notification_led_color_white</item>
+		<item>@string/pref_notification_led_color_blue</item>
+		<item>@string/pref_notification_led_color_yellow</item>
+		<item>@string/pref_notification_led_color_cyan</item>
+		<item>@string/pref_notification_led_color_magenta</item>
+		<item>@string/pref_notification_led_color_pink</item>
+		<item>@string/pref_notification_led_color_orange</item>
+		<item>@string/pref_notification_led_color_light_blue</item>
+	</string-array>
+	
+	<string-array name="pref_notification_led_color_values" translatable="false">
+        <item>red</item>
+        <item>green</item>
+        <item>white</item>
+        <item>blue</item>
+        <item>yellow</item>
+        <item>cyan</item>
+        <item>#800080</item>
+        <item>#ffc0cb</item>
+        <item>#ffa500</item>
+        <item>#add8e6</item>
+    </string-array>
+    
+    <string-array name="pref_notification_led_blink_rate_entries">
+        <item>@string/pref_notification_led_blink_rate_two</item>
+        <item>@string/pref_notification_led_blink_rate_three</item>
+        <item>@string/pref_notification_led_blink_rate_four</item>
+        <item>@string/pref_notification_led_blink_rate_five</item>
+        <item>@string/pref_notification_led_blink_rate_six</item>
+    </string-array>
+
+    <string-array name="pref_notification_led_blink_rate_values" translatable="false">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string-array name="pref_notification_vibrate_pattern_entries">
+      <item>@string/pref_notification_vibrate_pattern_normal</item>
+      <item>@string/pref_notification_vibrate_pattern_medium</item>
+      <item>@string/pref_notification_vibrate_pattern_long</item>
+      <item>@string/pref_notification_vibrate_pattern_multiple_short</item>
+      <item>@string/pref_notification_vibrate_pattern_multiple_long</item>
+   </string-array>
+   
+    <string-array name="pref_notification_vibrate_pattern_values">
+      <item></item>
+      <item>500,1200</item>
+      <item>500,2500</item>
+      <item>0,300,100,300,100,300,100,300,100,300</item>
+      <item>0,800,200,800,200,800</item>
+   </string-array>
+</resources>

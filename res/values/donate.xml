@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string
+		name="donate_message">Kitchen Timer is free, open source and has no ads. You can
+		support it with a small donation.\n\nThanks to your help, it will be
+		possible to test the application on a greater number of devices and to
+		keep developing it. \n\nDonating is easy: touch the \"Yes\" button and
+		you will be redirected to the Market where you can buy a Donate
+		application.</string>
+</resources>
