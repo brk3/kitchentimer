@@ -22,7 +22,6 @@ package com.leinardi.kitchentimer.ui;
 import com.leinardi.kitchentimer.R;
 import com.leinardi.kitchentimer.customtypes.Food;
 import com.leinardi.kitchentimer.customtypes.Food.FoodMetaData;
-import com.leinardi.kitchentimer.customviews.NumberPicker;
 import com.leinardi.kitchentimer.database.DbTool;
 import com.leinardi.kitchentimer.misc.Constants;
 import com.leinardi.kitchentimer.utils.Utils;
@@ -44,6 +43,7 @@ import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.NumberPicker;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -124,13 +124,18 @@ public class PresetsActivity extends ListActivity {
 		npMinutes = (NumberPicker)findViewById(R.id.npMinutes);
 		npSeconds= (NumberPicker)findViewById(R.id.npSeconds);
 
-		npHours.setFormatter(NumberPicker.TWO_DIGIT_FORMATTER);
-		npMinutes.setFormatter(NumberPicker.TWO_DIGIT_FORMATTER);
-		npSeconds.setFormatter(NumberPicker.TWO_DIGIT_FORMATTER);
+		npHours.setFormatter(MainActivity.TWO_DIGIT_FORMATTER);
+		npMinutes.setFormatter(MainActivity.TWO_DIGIT_FORMATTER);
+		npSeconds.setFormatter(MainActivity.TWO_DIGIT_FORMATTER);
 
-		npHours.setRange(0, 23);
-		npMinutes.setRange(0, 59);
-		npSeconds.setRange(0, 59);
+        npHours.setMinValue(0);
+        npHours.setMaxValue(23);
+
+        npMinutes.setMinValue(0);
+        npMinutes.setMaxValue(59);
+
+        npSeconds.setMinValue(0);
+        npSeconds.setMaxValue(59);
 
 		btnSave = (Button)findViewById(R.id.btnSave);
 		etPresetName = (EditText)findViewById(R.id.etPresetName);
@@ -141,9 +146,9 @@ public class PresetsActivity extends ListActivity {
 			public void onClick(View v) {
 				btnSave.requestFocusFromTouch();
 				food.name = etPresetName.getText().toString();
-				food.hours = npHours.getCurrent();
-				food.minutes = npMinutes.getCurrent();
-				food.seconds = npSeconds.getCurrent();
+				food.hours = npHours.getValue();
+				food.minutes = npMinutes.getValue();
+				food.seconds = npSeconds.getValue();
 
 				boolean validato=true;
 				StringBuffer validationFailMessage =  new StringBuffer();
@@ -273,9 +278,9 @@ public class PresetsActivity extends ListActivity {
 				food.seconds = tmpCursor.getInt(tmpCursor.getColumnIndex(FoodMetaData.SECONDS));
 				food.name = tmpCursor.getString(tmpCursor.getColumnIndex(FoodMetaData.NAME));
 
-				npHours.setCurrent(food.hours);
-				npMinutes.setCurrent(food.minutes);
-				npSeconds.setCurrent(food.seconds);
+				npHours.setValue(food.hours);
+				npMinutes.setValue(food.minutes);
+				npSeconds.setValue(food.seconds);
 				etPresetName.setText(food.name);
 				isEdit=true;
 				btnSave.setText(R.string.edit);

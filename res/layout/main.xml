@@ -141,17 +141,17 @@
 			android:layout_width="fill_parent"
 			android:layout_marginTop="8dp">
 
-			<com.leinardi.kitchentimer.customviews.NumberPicker
+			<NumberPicker
 				android:id="@+id/npHours"
 				android:layout_height="wrap_content"
 				android:layout_width="fill_parent"
 				android:layout_weight="1" />
-			<com.leinardi.kitchentimer.customviews.NumberPicker
+			<NumberPicker
 				android:id="@+id/npMinutes"
 				android:layout_height="wrap_content"
 				android:layout_width="fill_parent"
 				android:layout_weight="1" />
-			<com.leinardi.kitchentimer.customviews.NumberPicker
+			<NumberPicker
 				android:id="@+id/npSeconds"
 				android:layout_height="wrap_content"
 				android:layout_width="fill_parent"

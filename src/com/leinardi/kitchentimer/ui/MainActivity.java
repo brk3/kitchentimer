@@ -26,12 +26,12 @@ package com.leinardi.kitchentimer.ui;
  */
 
 import com.leinardi.kitchentimer.R;
-import com.leinardi.kitchentimer.customviews.NumberPicker;
 import com.leinardi.kitchentimer.misc.Changelog;
 import com.leinardi.kitchentimer.misc.Constants;
 import com.leinardi.kitchentimer.misc.Eula;
 import com.leinardi.kitchentimer.utils.Utils;
 
+import android.widget.NumberPicker;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -145,27 +145,47 @@ public class MainActivity extends Activity {
 		}
 	}
 
+    public static final NumberPicker.Formatter TWO_DIGIT_FORMATTER =
+        new NumberPicker.Formatter() {
+
+            final StringBuilder mBuilder = new StringBuilder();
+            final java.util.Formatter mFmt = new java.util.Formatter(mBuilder);
+            final Object[] mArgs = new Object[1];
+
+            public String format(int value) {
+                mArgs[0] = value;
+                mBuilder.delete(0, mBuilder.length());
+                mFmt.format("%02d", mArgs);
+                return mFmt.toString();
+            }
+    };
+
 	/** Get references to UI widgets and initialize them if needed */
 	private void initWidgets() {
 		npHours = (NumberPicker) findViewById(R.id.npHours);
 		npMinutes = (NumberPicker) findViewById(R.id.npMinutes);
 		npSeconds = (NumberPicker) findViewById(R.id.npSeconds);
 
-		npHours.setFormatter(NumberPicker.TWO_DIGIT_FORMATTER);
-		npMinutes.setFormatter(NumberPicker.TWO_DIGIT_FORMATTER);
-		npSeconds.setFormatter(NumberPicker.TWO_DIGIT_FORMATTER);
+		npHours.setFormatter(TWO_DIGIT_FORMATTER);
+		npMinutes.setFormatter(TWO_DIGIT_FORMATTER);
+		npSeconds.setFormatter(TWO_DIGIT_FORMATTER);
 
-		npHours.setRange(0, 23);
-		npMinutes.setRange(0, 59);
-		npSeconds.setRange(0, 59);
+        npHours.setMinValue(0);
+        npHours.setMaxValue(23);
 
-		npHours.setSpeed(50);
-		npMinutes.setSpeed(50);
-		npSeconds.setSpeed(50);
+		npMinutes.setMinValue(0);
+		npMinutes.setMaxValue(59);
 
-		npHours.setCurrent(mPrefs.getInt(Constants.PREF_HOURS, 0));
-		npMinutes.setCurrent(mPrefs.getInt(Constants.PREF_MINUTES, 0));
-		npSeconds.setCurrent(mPrefs.getInt(Constants.PREF_SECONDS, 0));
+		npSeconds.setMinValue(0);
+		npSeconds.setMaxValue(59);
+
+		npHours.setOnLongPressUpdateInterval(50);
+		npMinutes.setOnLongPressUpdateInterval(50);
+		npSeconds.setOnLongPressUpdateInterval(50);
+
+		npHours.setValue(mPrefs.getInt(Constants.PREF_HOURS, 0));
+		npMinutes.setValue(mPrefs.getInt(Constants.PREF_MINUTES, 0));
+		npSeconds.setValue(mPrefs.getInt(Constants.PREF_SECONDS, 0));
 
 		btnTimer = new Button[Constants.NUM_TIMERS];
 		btnTimer[0] = (Button) findViewById(R.id.btnTimer0);
@@ -197,9 +217,9 @@ public class MainActivity extends Activity {
 		super.onStop();
 
 		SharedPreferences.Editor editor = mPrefs.edit();
-		editor.putInt(Constants.PREF_HOURS, npHours.getCurrent());
-		editor.putInt(Constants.PREF_MINUTES, npMinutes.getCurrent());
-		editor.putInt(Constants.PREF_SECONDS, npSeconds.getCurrent());
+		editor.putInt(Constants.PREF_HOURS, npHours.getValue());
+		editor.putInt(Constants.PREF_MINUTES, npMinutes.getValue());
+		editor.putInt(Constants.PREF_SECONDS, npSeconds.getValue());
 		editor.commit();
 		for (int timer = 0; timer < Constants.NUM_TIMERS; timer++) {
 			if (timerIsRunning[timer])
@@ -251,9 +271,9 @@ public class MainActivity extends Activity {
 		if (requestCode == Constants.REQUEST_PRESETS) {
 			if (resultCode == RESULT_OK) {
 				Bundle extras = data.getExtras();
-				npHours.setCurrent(extras.getInt("hours"));
-				npMinutes.setCurrent(extras.getInt("minutes"));
-				npSeconds.setCurrent(extras.getInt("seconds"));
+				npHours.setValue(extras.getInt("hours"));
+				npMinutes.setValue(extras.getInt("minutes"));
+				npSeconds.setValue(extras.getInt("seconds"));
 				presetName=extras.getString("name");
 			}
 		}
@@ -360,8 +380,8 @@ public class MainActivity extends Activity {
 		if (timerIsRunning[timer])
 			setTimerState(false, timer);
 		else {
-			timerSeconds[timer] = npHours.getCurrent() * 3600
-			+ npMinutes.getCurrent() * 60 + npSeconds.getCurrent();
+			timerSeconds[timer] = npHours.getValue() * 3600
+			+ npMinutes.getValue() * 60 + npSeconds.getValue();
 			if (timerSeconds[timer] > 0){
 				setTimerState(true, timer);
 				if (mPrefs.getBoolean(getString(R.string.pref_show_tips_key), true)){
