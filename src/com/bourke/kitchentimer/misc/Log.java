@@ -17,7 +17,7 @@
  *  
  */
 
-package com.leinardi.kitchentimer.misc;
+package com.bourke.kitchentimer.misc;
 
 import android.util.Config;
 

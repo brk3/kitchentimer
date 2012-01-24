@@ -17,7 +17,7 @@
  *  
  */
 
-package com.leinardi.kitchentimer.misc;
+package com.bourke.kitchentimer.misc;
 
 import java.io.File;
 
@@ -64,5 +64,5 @@ public class Constants
 	public static final String PREF_EULA = "eula";
 	public static final String PREF_EULA_ACCEPTED = "eula.accepted";
 	
-	public static final String APP_NAMESPACE = "http://schemas.android.com/apk/res/com.leinardi.kitchentimer";
+	public static final String APP_NAMESPACE = "http://schemas.android.com/apk/res/com.bourke.kitchentimer";
 }

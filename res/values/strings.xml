@@ -66,7 +66,7 @@
 	<string
 		name="edit_timer_name">Edit Timer name</string>
 	<string
-		name="error_time">You must select a time</string>
+		name="error_time">Enter a time to countdown</string>
 	<string
 		name="error_name">You must select a name</string>
 	<string

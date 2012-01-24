@@ -12,15 +12,38 @@
 		not, see <http://www.gnu.org/licenses/>.
 	-->
 
-<shape
-	xmlns:android="http://schemas.android.com/apk/res/android">
-	<solid
-		android:color="@color/gray_dark" />
-	<padding
-		android:left="5dp"
-		android:top="0dp"
-		android:right="5dp"
-		android:bottom="0dp" />
-	<corners
-		android:radius="10dp" />
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:state_selected="true">
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid
+                android:color="@color/gray_dark" />
+            <padding
+                android:left="5dp"
+                android:top="0dp"
+                android:right="5dp"
+                android:bottom="0dp" />
+            <corners
+                android:radius="10dp" />
+            <stroke
+                android:width="5px"
+                android:color="@color/holo_blue_dark" />
+        </shape>
+    </item>
+
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android">
+            <solid
+                android:color="@color/gray_dark" />
+            <padding
+                android:left="5dp"
+                android:top="0dp"
+                android:right="5dp"
+                android:bottom="0dp" />
+            <corners
+                android:radius="10dp" />
+        </shape>
+    </item>
+
+</selector>

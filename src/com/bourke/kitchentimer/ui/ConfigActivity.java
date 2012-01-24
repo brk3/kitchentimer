@@ -17,10 +17,10 @@
  *  
  */
 
-package com.leinardi.kitchentimer.ui;
+package com.bourke.kitchentimer.ui;
 
-import com.leinardi.kitchentimer.R;
-import com.leinardi.kitchentimer.misc.Log;
+import com.bourke.kitchentimer.R;
+import com.bourke.kitchentimer.misc.Log;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;

@@ -17,11 +17,11 @@
  *  
  */
 
-package com.leinardi.kitchentimer.database;
+package com.bourke.kitchentimer.database;
 
-import com.leinardi.kitchentimer.customtypes.Food;
-import com.leinardi.kitchentimer.customtypes.Food.FoodMetaData;
-import com.leinardi.kitchentimer.misc.Log;
+import com.bourke.kitchentimer.customtypes.Food;
+import com.bourke.kitchentimer.customtypes.Food.FoodMetaData;
+import com.bourke.kitchentimer.misc.Log;
 
 import android.content.ContentValues;
 import android.content.Context;

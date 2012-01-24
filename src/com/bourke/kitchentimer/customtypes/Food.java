@@ -17,7 +17,7 @@
  *  
  */
 
-package com.leinardi.kitchentimer.customtypes;
+package com.bourke.kitchentimer.customtypes;
 
 import java.io.Serializable;
 

@@ -17,7 +17,7 @@
  *
  */
 
-package com.leinardi.kitchentimer.ui;
+package com.bourke.kitchentimer.ui;
 
 /*
  * TODO:
@@ -25,11 +25,11 @@ package com.leinardi.kitchentimer.ui;
  * Rendere modificabile il nome dei Timers
  */
 
-import com.leinardi.kitchentimer.R;
-import com.leinardi.kitchentimer.misc.Changelog;
-import com.leinardi.kitchentimer.misc.Constants;
-import com.leinardi.kitchentimer.misc.Eula;
-import com.leinardi.kitchentimer.utils.Utils;
+import com.bourke.kitchentimer.R;
+import com.bourke.kitchentimer.misc.Changelog;
+import com.bourke.kitchentimer.misc.Constants;
+import com.bourke.kitchentimer.misc.Eula;
+import com.bourke.kitchentimer.utils.Utils;
 
 import android.widget.NumberPicker;
 import android.app.Activity;
@@ -61,6 +61,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 public class MainActivity extends Activity {
     public final static String TAG = "MainActivity";
@@ -85,11 +86,16 @@ public class MainActivity extends Activity {
     private NumberPicker npMinutes;
     private NumberPicker npSeconds;
 
-    private Button[] btnTimer;
+    private Button btnTimer;
     private TextView[] tvTimer;
     private TextView[] tvTimerLabel;
 
     private String presetName;
+
+    private static final int TIMER_0 = 0;
+    private static final int TIMER_1 = 1;
+    private static final int TIMER_2 = 2;
+    private int mSelectedTimerView = TIMER_0;
 
     ColorStateList timerDefaultColor;
 
@@ -166,6 +172,10 @@ public class MainActivity extends Activity {
         npMinutes = (NumberPicker) findViewById(R.id.npMinutes);
         npSeconds = (NumberPicker) findViewById(R.id.npSeconds);
 
+        setNumberPickerKeyboard(npHours, false);
+        setNumberPickerKeyboard(npMinutes, false);
+        setNumberPickerKeyboard(npSeconds, false);
+
         npHours.setFormatter(TWO_DIGIT_FORMATTER);
         npMinutes.setFormatter(TWO_DIGIT_FORMATTER);
         npSeconds.setFormatter(TWO_DIGIT_FORMATTER);
@@ -187,10 +197,7 @@ public class MainActivity extends Activity {
         npMinutes.setValue(mPrefs.getInt(Constants.PREF_MINUTES, 0));
         npSeconds.setValue(mPrefs.getInt(Constants.PREF_SECONDS, 0));
 
-        btnTimer = new Button[Constants.NUM_TIMERS];
-        btnTimer[0] = (Button) findViewById(R.id.btnTimer0);
-        btnTimer[1] = (Button) findViewById(R.id.btnTimer1);
-        btnTimer[2] = (Button) findViewById(R.id.btnTimer2);
+        btnTimer = (Button)findViewById(R.id.btnTimer0);
 
         tvTimer = new TextView[Constants.NUM_TIMERS];
         tvTimer[0] = (TextView) this.findViewById(R.id.tvTimer0);
@@ -203,10 +210,13 @@ public class MainActivity extends Activity {
         tvTimerLabel[2] = (TextView) this.findViewById(R.id.tvTimer2_label);
 
         timerDefaultColor = tvTimer[0].getTextColors();
+        tvTimer[0].setSelected(true);
 
+        btnTimer.setOnClickListener(this.clickListener);
         for (int timer = 0; timer < Constants.NUM_TIMERS; timer++) {
-            tvTimerLabel[timer].setText(mPrefs.getString(Constants.PREF_TIMERS_NAMES[timer], timerDefaultName[timer]));
-            btnTimer[timer].setOnClickListener(this.clickListener);
+            tvTimerLabel[timer].setText(mPrefs.getString(
+                        Constants.PREF_TIMERS_NAMES[timer],
+                        timerDefaultName[timer]));
             tvTimerLabel[timer].setOnClickListener(this.clickListener);
             tvTimer[timer].setOnClickListener(this.clickListener);
         }
@@ -292,26 +302,39 @@ public class MainActivity extends Activity {
                 setTimerName(TIMERS[2]);
                 break;
             case R.id.tvTimer0:
+                mSelectedTimerView = TIMER_0;
+                updateTimerWidgets();
                 cancelTimeIsOverNotification(TIMERS[0]);
                 break;
             case R.id.tvTimer1:
+                mSelectedTimerView = TIMER_1;
+                updateTimerWidgets();
                 cancelTimeIsOverNotification(TIMERS[1]);
                 break;
             case R.id.tvTimer2:
+                mSelectedTimerView = TIMER_2;
+                updateTimerWidgets();
                 cancelTimeIsOverNotification(TIMERS[2]);
                 break;
             case R.id.btnTimer0:
-                startTimer(TIMERS[0]);
-                break;
-            case R.id.btnTimer1:
-                startTimer(TIMERS[1]);
-                break;
-            case R.id.btnTimer2:
-                startTimer(TIMERS[2]);
+                startTimer(TIMERS[mSelectedTimerView]);
                 break;
             }
         }
     };
+
+    private void updateTimerWidgets() {
+        if (timerIsRunning[mSelectedTimerView]) {
+            btnTimer.setText(R.string.stop);
+        } else {
+            btnTimer.setText(R.string.start);
+        }
+
+        for (int timer = 0; timer < Constants.NUM_TIMERS; timer++) {
+            tvTimer[timer].setSelected(false);
+        }
+        tvTimer[mSelectedTimerView].setSelected(true);
+    }
 
     private void setTimerName(final int timer) {
         AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
@@ -376,7 +399,7 @@ public class MainActivity extends Activity {
         editor.commit();
         mPendingIntent[timer] = PendingIntent.getBroadcast(this, timer, intent, 0);
 
-        btnTimer[timer].requestFocusFromTouch();
+        btnTimer.requestFocusFromTouch();
         if (timerIsRunning[timer])
             setTimerState(false, timer);
         else {
@@ -481,7 +504,7 @@ public class MainActivity extends Activity {
         if (start) {
             tvTimer[timer].setTextColor(getResources().getColor(R.color.white));
             tvTimer[timer].setShadowLayer(Utils.dp2px(4, this), 0f, 0f, getResources().getColor(R.color.white));
-            btnTimer[timer].setText(R.string.stop);
+            btnTimer.setText(R.string.stop);
             mHandler.removeCallbacks(countdownRunnable[timer]);
             countdownRunnable[timer].run();
 
@@ -490,7 +513,7 @@ public class MainActivity extends Activity {
             tvTimer[timer].setShadowLayer(0f, 0f, 0f, 0);
             tvTimer[timer].setText(timer == 0 ? R.string.sixzeros
                     : R.string.fourzeros);
-            btnTimer[timer].setText(R.string.start);
+            btnTimer.setText(R.string.start);
             mHandler.removeCallbacks(countdownRunnable[timer]);
         }
     }
@@ -639,4 +662,20 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void setNumberPickerKeyboard(NumberPicker numPicker,
+            boolean enable) {
+        int childCount = numPicker.getChildCount();
+
+        for (int i = 0; i < childCount; i++) {
+            View childView = numPicker.getChildAt(i);
+
+            if (childView instanceof EditText) {
+                EditText et = (EditText) childView;
+                et.setFocusable(enable);
+                return;
+            }
+        }
+    }
+
 }

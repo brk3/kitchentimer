@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.leinardi.kitchentimer.customviews;
+package com.bourke.kitchentimer.customviews;
 
-import com.leinardi.kitchentimer.R;
+import com.bourke.kitchentimer.R;
 
 import android.content.Context;
 import android.os.Handler;

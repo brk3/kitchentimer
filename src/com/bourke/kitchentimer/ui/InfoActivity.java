@@ -1,6 +1,6 @@
-package com.leinardi.kitchentimer.ui;
+package com.bourke.kitchentimer.ui;
 
-import com.leinardi.kitchentimer.R;
+import com.bourke.kitchentimer.R;
 
 import android.app.Activity;
 import android.os.Bundle;

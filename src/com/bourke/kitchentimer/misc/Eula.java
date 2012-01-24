@@ -17,10 +17,10 @@
  *  
  */
 
-package com.leinardi.kitchentimer.misc;
+package com.bourke.kitchentimer.misc;
 
-import com.leinardi.kitchentimer.R;
-import com.leinardi.kitchentimer.utils.Utils;
+import com.bourke.kitchentimer.R;
+import com.bourke.kitchentimer.utils.Utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;

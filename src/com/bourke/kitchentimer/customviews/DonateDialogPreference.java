@@ -17,32 +17,41 @@
  *  
  */
 
-package com.leinardi.kitchentimer.customviews;
+package com.bourke.kitchentimer.customviews;
 
-import com.leinardi.kitchentimer.R;
-import com.leinardi.kitchentimer.utils.Utils;
+import com.bourke.kitchentimer.R;
+import com.bourke.kitchentimer.ui.ConfigActivity;
+import com.bourke.kitchentimer.ui.PresetsActivity;
+import com.bourke.kitchentimer.utils.Utils;
 
 import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 
-public class MyDialogPreference extends DialogPreference {
+public class DonateDialogPreference extends DialogPreference {
 	Context mContext;
 	String fileName;
 
-	public MyDialogPreference(Context context, AttributeSet attrs) {
+	public DonateDialogPreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		
+
 		mContext= context;
 		TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.MyDialogPreference);
 		fileName = a.getString(R.styleable.MyDialogPreference_fileName);
 	}
-	
-	protected void onPrepareDialogBuilder(Builder builder) {
-		builder.setView(Utils.dialogWebView(mContext, fileName));
+
+//	protected void onPrepareDialogBuilder(Builder builder) {
+//		builder.setView(Utils.dialogWebView(mContext, fileName));
+//	}
+
+	@Override
+	protected void onDialogClosed(boolean positiveResult) {
+		super.onDialogClosed(positiveResult);
+		if (positiveResult) {
+			Utils.donate(mContext);
+		}
 	}
-	
-	
 }

@@ -17,16 +17,16 @@
  *  
  */
 
-package com.leinardi.kitchentimer.receivers;
+package com.bourke.kitchentimer.receivers;
 
 import java.util.ArrayList;
 
-import com.leinardi.kitchentimer.R;
-import com.leinardi.kitchentimer.misc.Constants;
-import com.leinardi.kitchentimer.ui.MainActivity;
-//import com.leinardi.kitchentimer.R.drawable;
-//import com.leinardi.kitchentimer.R.raw;
-//import com.leinardi.kitchentimer.R.string;
+import com.bourke.kitchentimer.R;
+import com.bourke.kitchentimer.misc.Constants;
+import com.bourke.kitchentimer.ui.MainActivity;
+//import com.bourke.kitchentimer.R.drawable;
+//import com.bourke.kitchentimer.R.raw;
+//import com.bourke.kitchentimer.R.string;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -113,7 +113,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 				PendingIntent.FLAG_UPDATE_CURRENT);
 		notification.setLatestEventInfo(mContext, mContentTitle, mContentText, contentIntent);
 
-		String defaultNotification = "android.resource://com.leinardi.kitchentimer/" + R.raw.mynotification;
+		String defaultNotification = "android.resource://com.bourke.kitchentimer/" + R.raw.mynotification;
 		if (mPrefs.getBoolean(mContext.getString(R.string.pref_notification_sound_key), true)) {
 			if (mPrefs.getBoolean(mContext.getString(R.string.pref_notification_custom_sound_key), false)) {
 				String customNotification = mPrefs.getString(mContext

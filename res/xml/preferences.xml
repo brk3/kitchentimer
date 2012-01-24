@@ -14,14 +14,14 @@
 
 <PreferenceScreen
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res/com.leinardi.kitchentimer">
+	xmlns:app="http://schemas.android.com/apk/res/com.bourke.kitchentimer">
 	<PreferenceCategory
 		android:title="@string/info">
 		<Preference
 			android:key="@string/pref_info_version_key"
 			style="?android:preferenceInformationStyle"
 			android:title="@string/pref_info_version" />
-		<com.leinardi.kitchentimer.customviews.DonateDialogPreference
+		<com.bourke.kitchentimer.customviews.DonateDialogPreference
 			app:fileName="@string/changelog_filename"
 			android:key="@string/pref_donate_key"
 			android:title="@string/pref_donate"
@@ -34,7 +34,7 @@
 			android:key="@string/pref_report_a_bug_key"
 			android:title="@string/pref_report_a_bug"
 			android:summary="@string/pref_report_a_bug_summary" />
-		<com.leinardi.kitchentimer.customviews.MyDialogPreference
+		<com.bourke.kitchentimer.customviews.MyDialogPreference
 			app:fileName="@string/changelog_filename"
 			android:key="@string/pref_changelog_key"
 			android:title="@string/changelog_title"
@@ -42,7 +42,7 @@
 			android:dialogIcon="@drawable/ic_dialog_info"
 			android:dialogTitle="@string/changelog_title"
 			android:negativeButtonText="@null" />
-		<com.leinardi.kitchentimer.customviews.MyDialogPreference
+		<com.bourke.kitchentimer.customviews.MyDialogPreference
 			app:fileName="@string/eula_filename"
 			android:key="@string/pref_eula_key"
 			android:title="@string/eula_title"

@@ -23,4 +23,6 @@
 		name="black">@android:color/black</color>
 	<color
 		name="indian_red_1">#F75D59</color>
+	<color
+		name="holo_blue_dark">@android:color/holo_blue_dark</color>
 </resources>

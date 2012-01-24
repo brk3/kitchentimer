@@ -17,14 +17,14 @@
  *  
  */
 
-package com.leinardi.kitchentimer.ui;
+package com.bourke.kitchentimer.ui;
 
-import com.leinardi.kitchentimer.R;
-import com.leinardi.kitchentimer.customtypes.Food;
-import com.leinardi.kitchentimer.customtypes.Food.FoodMetaData;
-import com.leinardi.kitchentimer.database.DbTool;
-import com.leinardi.kitchentimer.misc.Constants;
-import com.leinardi.kitchentimer.utils.Utils;
+import com.bourke.kitchentimer.R;
+import com.bourke.kitchentimer.customtypes.Food;
+import com.bourke.kitchentimer.customtypes.Food.FoodMetaData;
+import com.bourke.kitchentimer.database.DbTool;
+import com.bourke.kitchentimer.misc.Constants;
+import com.bourke.kitchentimer.utils.Utils;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
