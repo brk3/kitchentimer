@@ -105,8 +105,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        Eula.show(this);
-        Changelog.show(this);
+        //Eula.show(this);
+        //Changelog.show(this);
 
         timerSeconds = new int[Constants.NUM_TIMERS];
         timerStartTime = new long[Constants.NUM_TIMERS];
