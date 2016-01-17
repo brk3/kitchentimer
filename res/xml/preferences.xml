@@ -163,6 +163,19 @@
 			android:entries="@array/pref_notification_vibrate_pattern_entries"
 			android:entryValues="@array/pref_notification_vibrate_pattern_values"
 			android:dialogTitle="@string/pref_notification_vibrate_pattern_dialogtitle" />
+		<CheckBoxPreference
+			android:key="@string/pref_notification_server_key"
+			android:title="@string/pref_notification_server"
+			android:summaryOn="@string/pref_notification_server_summary_on"
+			android:summaryOff="@string/pref_notification_server_summary_off"
+			android:defaultValue="false" />
+		<EditTextPreference
+			android:key="@string/pref_notification_server_url_key"
+			android:dependency="@string/pref_notification_server_key"
+			android:defaultValue="@string/pref_notification_server_url_default"
+			android:title="@string/pref_notification_server_url"
+			android:summary="@string/pref_notification_server_url_summary"
+			android:dialogTitle="@string/pref_notification_server_url_dialogtitle" />
 	</PreferenceCategory>
 </PreferenceScreen>
 

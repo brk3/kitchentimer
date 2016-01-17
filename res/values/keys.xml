@@ -53,4 +53,8 @@
 		name="pref_notification_vibrate_key">pref_notification_vibrate</string>
 	<string
 		name="pref_notification_vibrate_pattern_key">pref_notification_vibrate_pattern</string>
+	<string
+		name="pref_notification_server_key">pref_notification_server</string>
+	<string
+		name="pref_notification_server_url_key">pref_notification_server_url</string>
 </resources>

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import com.bourke.kitchentimer.R;
 import com.bourke.kitchentimer.misc.Constants;
 import com.bourke.kitchentimer.ui.MainActivity;
+import com.bourke.kitchentimer.utils.Utils;
 //import com.bourke.kitchentimer.R.drawable;
 //import com.bourke.kitchentimer.R.raw;
 //import com.bourke.kitchentimer.R.string;
@@ -144,6 +145,13 @@ public class AlarmReceiver extends BroadcastReceiver {
 					.getString(R.string.pref_notification_led_blink_rate_key), "2"));
 			notification.ledOnMS = 500;
 			notification.ledOffMS = mLedBlinkRate * 1000;
+		}
+		if (mPrefs.getBoolean(mContext.getString(R.string.pref_notification_server_key), false)) {
+			String mServerUrl = mPrefs.getString(mContext
+					.getString(R.string.pref_notification_server_url_key), "");
+			if (!mServerUrl.equals("")) {
+				Utils.notifyServer(String.format(mServerUrl, "alarm", 0, Integer.toString(timer), Uri.encode(timerName)));
+			}
 		}
 
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;

@@ -249,6 +249,23 @@
 	<string
 		name="pref_notification_vibrate_pattern_multiple_long">Multiple Long</string>
 
+	<string
+		name="pref_notification_server">Server</string>
+	<string
+		name="pref_notification_server_summary_on">Server notification enabled</string>
+	<string
+		name="pref_notification_server_summary_off">Server notification disabled</string>
+
+	<string
+		name="pref_notification_server_url">Server URL</string>
+	<string
+		name="pref_notification_server_url_summary">Change server URL</string>
+	<string
+		name="pref_notification_server_url_dialogtitle">Select your server URL</string>
+	<string
+		formatted="false"
+		name="pref_notification_server_url_default">https://user:pass@server.example.com:1234/path/app?event=%s&amp;time_seconds=%s&amp;timer_id=%s&amp;timer_name=%s</string>
+
 	<!-- Notifications -->
 	<string
 		name="timer_started">Timer Started</string>
