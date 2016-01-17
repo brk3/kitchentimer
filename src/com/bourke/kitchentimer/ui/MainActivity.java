@@ -77,6 +77,7 @@ public class MainActivity extends Activity {
     private MyRunnable[] countdownRunnable;
 
     private boolean[] timerIsRunning;
+    private boolean[] timerIsIncrementing;
     private int[] timerSeconds;
     private long[] timerStartTime;
 
@@ -110,6 +111,7 @@ public class MainActivity extends Activity {
 
         timerSeconds = new int[Constants.NUM_TIMERS];
         timerStartTime = new long[Constants.NUM_TIMERS];
+        timerIsIncrementing = new boolean[Constants.NUM_TIMERS];
         timerIsRunning = new boolean[Constants.NUM_TIMERS];
 
         timerDefaultName = new String[Constants.NUM_TIMERS];
@@ -129,6 +131,7 @@ public class MainActivity extends Activity {
 
         for (int timer = 0; timer < Constants.NUM_TIMERS; timer++) {
             timerIsRunning[timer] = false;
+            timerIsIncrementing[timer] = false;
             countdownRunnable[timer] = new MyRunnable(timer);
             Intent intent = new Intent(Constants.INTENT_TIMER_ENDED);
             intent.putExtra(Constants.TIMER, timer);
@@ -243,6 +246,7 @@ public class MainActivity extends Activity {
         for (int timer = 0; timer < Constants.NUM_TIMERS; timer++) {
             timerSeconds[timer] = mPrefs.getInt(Constants.PREF_TIMERS_SECONDS[timer], 0);
             timerStartTime[timer] = mPrefs.getLong(Constants.PREF_START_TIMES[timer], 0L);
+            timerIsIncrementing[timer] = mPrefs.getBoolean(Constants.PREF_TIMER_INCREMENTING[timer], false);
             timerIsRunning[timer] = (timerStartTime[timer] != 0L);
             startRunnable(timerIsRunning[timer], timer);
             tvTimerLabel[timer].setText(mPrefs.getString(Constants.PREF_TIMERS_NAMES[timer], timerDefaultName[timer]));
@@ -406,6 +410,7 @@ public class MainActivity extends Activity {
             timerSeconds[timer] = npHours.getValue() * 3600
             + npMinutes.getValue() * 60 + npSeconds.getValue();
             if (timerSeconds[timer] > 0){
+                timerIsIncrementing[timer] = false;
                 setTimerState(true, timer);
                 if (mPrefs.getBoolean(getString(R.string.pref_show_tips_key), true)){
                     Toast toast = Toast.makeText(this, getString(R.string.tip1), Toast.LENGTH_LONG);
@@ -413,7 +418,9 @@ public class MainActivity extends Activity {
                     toast.show();
                 }
             }else{
-                Toast.makeText(this, getString(R.string.error_time), Toast.LENGTH_LONG).show();
+                timerIsIncrementing[timer] = true;
+                setTimerState(true, timer);
+                Toast.makeText(this, getString(R.string.timer_incrementing), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -442,15 +449,20 @@ public class MainActivity extends Activity {
 
         @Override
         public void run() {
-            long remainingSeconds = timerSeconds[timer] - (SystemClock.elapsedRealtime() - timerStartTime[timer]) / 1000;
-            tvTimer[timer].setText(Utils.formatTime(Math.max(remainingSeconds, 0L), timer));
-            if (remainingSeconds <= 0) {
-                setTimerState(false, timer);
-                if (mPrefs.getBoolean(getString(R.string.pref_clear_timer_label_key), false)){
-                    tvTimerLabel[timer].setText(timerDefaultName[timer]);
+            if (timerIsIncrementing[timer]) {
+                long elapsedSeconds = (SystemClock.elapsedRealtime() - timerStartTime[timer]) / 1000;
+                tvTimer[timer].setText(Utils.formatTime(Math.max(elapsedSeconds, 0L), timer));
+            } else {
+                long remainingSeconds = timerSeconds[timer] - (SystemClock.elapsedRealtime() - timerStartTime[timer]) / 1000;
+                tvTimer[timer].setText(Utils.formatTime(Math.max(remainingSeconds, 0L), timer));
+                if (remainingSeconds < 0) {
+                    setTimerState(false, timer);
+                    if (mPrefs.getBoolean(getString(R.string.pref_clear_timer_label_key), false)){
+                        tvTimerLabel[timer].setText(timerDefaultName[timer]);
+                    }
+                    tvTimer[timer].setTextColor(getResources().getColor(R.color.indian_red_1));
+                    tvTimer[timer].setShadowLayer(Utils.dp2px(7, getApplicationContext()), 0f, 0f, getResources().getColor(R.color.indian_red_1));
                 }
-                tvTimer[timer].setTextColor(getResources().getColor(R.color.indian_red_1));
-                tvTimer[timer].setShadowLayer(Utils.dp2px(7, getApplicationContext()), 0f, 0f, getResources().getColor(R.color.indian_red_1));
             }
             if (timerIsRunning[timer]) {
                 mHandler.postDelayed(this, 1000);
@@ -479,9 +491,11 @@ public class MainActivity extends Activity {
         // Log.d(TAG, String.format("SetAlarmOn(on=%b)", on));
         if (state) {
             timerStartTime[timer] = SystemClock.elapsedRealtime();
-            mAlarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock
-                    .elapsedRealtime()
-                    + timerSeconds[timer] * 1000, mPendingIntent[timer]);
+            if (!timerIsIncrementing[timer]) {
+                mAlarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock
+                        .elapsedRealtime()
+                        + timerSeconds[timer] * 1000, mPendingIntent[timer]);
+            }
         } else {
             timerStartTime[timer] = 0L;
             mAlarmManager.cancel(mPendingIntent[timer]);
@@ -490,6 +504,7 @@ public class MainActivity extends Activity {
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.putInt(Constants.PREF_TIMERS_SECONDS[timer], timerSeconds[timer]);
         editor.putLong(Constants.PREF_START_TIMES[timer], timerStartTime[timer]);
+        editor.putBoolean(Constants.PREF_TIMER_INCREMENTING[timer], timerIsIncrementing[timer]);
         editor.commit();
     }
 
@@ -635,9 +650,11 @@ public class MainActivity extends Activity {
                         SharedPreferences.Editor editor = mPrefs.edit();
                         editor.putInt(Constants.PREF_TIMERS_SECONDS[i], 0);
                         editor.putLong(Constants.PREF_START_TIMES[i], 0L);
+                        editor.putBoolean(Constants.PREF_TIMER_INCREMENTING[i], false);
                         editor.commit();
                         timerSeconds[i] = 0;
                         timerStartTime[i] = 0L;
+                        timerIsIncrementing[i] = false;
                         timerIsRunning[i] = false;
                     }
                     if (flag) {

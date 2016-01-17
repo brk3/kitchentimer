@@ -53,6 +53,10 @@ public class Constants
 		"start_time_0",
 		"start_time_1", 
 		"start_time_2" };
+	public static final String[] PREF_TIMER_INCREMENTING = { 
+		"timer_incrementing_0",
+		"timer_incrementing_1", 
+		"timer_incrementing_2" };
 
 	public static final int NUM_TIMERS = 3;
 	
