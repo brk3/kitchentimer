@@ -444,7 +444,7 @@ public class MainActivity extends Activity {
         public void run() {
             long remainingSeconds = timerSeconds[timer] - (SystemClock.elapsedRealtime() - timerStartTime[timer]) / 1000;
             tvTimer[timer].setText(Utils.formatTime(Math.max(remainingSeconds, 0L), timer));
-            if (remainingSeconds <= 0) {
+            if (remainingSeconds < 0) {
                 setTimerState(false, timer);
                 if (mPrefs.getBoolean(getString(R.string.pref_clear_timer_label_key), false)){
                     tvTimerLabel[timer].setText(timerDefaultName[timer]);
