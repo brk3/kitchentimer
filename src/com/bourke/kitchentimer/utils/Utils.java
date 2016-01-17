@@ -19,12 +19,14 @@
 
 package com.bourke.kitchentimer.utils;
 
+import java.lang.Thread;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -41,10 +43,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Base64;
 import android.view.View;
 import android.webkit.WebView;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 public class Utils {
 
@@ -215,6 +222,36 @@ public class Utils {
 				Uri.parse("market://search?q=Donation%20pub:%22Roberto%20Leinardi%22") );
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		mContext.startActivity(intent);
+	}
+
+	public static void notifyServer(final String serverUrl) {
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				try {
+					Log.d("Utils", "notifyServer:" + serverUrl);
+					DefaultHttpClient httpclient = new DefaultHttpClient();
+					HttpGet httpget = new HttpGet(serverUrl);
+
+					URL url = new URL(serverUrl);
+					String userInfo = url.getUserInfo();
+					if( userInfo != null ) {
+						httpget.addHeader("Authorization", "Basic " + Base64.encodeToString(userInfo.getBytes(), Base64.NO_WRAP));
+					}
+
+					HttpResponse response = httpclient.execute(httpget);
+					response.getEntity().getContent().close();
+					httpclient.getConnectionManager().shutdown();
+
+					int status = response.getStatusLine().getStatusCode();
+					if ( status < 200 || status > 299 ) {
+						throw new Exception(response.getStatusLine().toString());
+					}
+				} catch (Exception ex) {
+					Log.e("Utils", "Error notifying server: ", ex);
+				}
+			}
+		}).start();
 	}
 
 }

@@ -43,6 +43,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
@@ -425,6 +426,7 @@ public class MainActivity extends Activity {
             if (mNotificationManager != null) {
                 mNotificationManager.cancel(timer + 10);
             }
+            sendServerNotification("cancel", timer);
         }
     }
 
@@ -468,6 +470,7 @@ public class MainActivity extends Activity {
         setAlarmState(state, timer);
         startRunnable(state, timer);
         sendTimerIsRunningNotification(state, timer);
+        sendServerNotification(state ? "start" : "stop", timer);
     }
 
     /**
@@ -561,6 +564,21 @@ public class MainActivity extends Activity {
                 mNotificationManager.cancel(Constants.APP_NOTIF_ID);
             }
         }
+    }
+
+    /**
+     *
+     * @param event
+     * @param timer
+     */
+    private void sendServerNotification(String event, int timer) {
+	if (mPrefs.getBoolean(getString(R.string.pref_notification_server_key), false)) {
+	    String mServerUrl = mPrefs.getString(getString(R.string.pref_notification_server_url_key), "");
+	    if (!mServerUrl.equals("")) {
+		Utils.notifyServer(String.format(mServerUrl, event, timerSeconds[timer], Integer.toString(timer),
+			Uri.encode(mPrefs.getString(Constants.PREF_TIMERS_NAMES[timer], timerDefaultName[timer]))));
+	    }
+	}
     }
 
     /*
